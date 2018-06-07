@@ -1,0 +1,16 @@
+Backend: Jonathan/Kasper
+Front: Tim/Conner
+
+Week 1&2: Get google translate api working text to text
+	skeleton front end
+
+week 3&4: Speech to text recognition
+	specialized front end for IOS and Android
+
+Week 5&6: STT integration with translate api
+	menu -> text to translate, speech to translate, discover language
+
+week 7&8: Audio -> discover language and translate
+	refine front
+
+Week 9&10: TBD
