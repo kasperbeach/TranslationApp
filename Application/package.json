@@ -1,0 +1,22 @@
+{
+  "name": "terp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kasperbeach/TranslationApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kasperbeach/TranslationApp/issues"
+  },
+  "homepage": "https://github.com/kasperbeach/TranslationApp#readme",
+  "dependencies": {
+    "google-translate-api": "^2.3.0"
+  }
+}
