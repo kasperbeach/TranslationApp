@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kasperbeach/TranslationApp#readme",
   "dependencies": {
-    "google-translate-api": "^2.3.0"
+    "google-translate-api": "^2.3.0",
+    "prompt": "^1.0.0"
   }
 }
