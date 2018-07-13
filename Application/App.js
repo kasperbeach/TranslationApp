@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { PowerTranslator, ProviderTypes, TranslatorConfiguration } from 'react-native-power-translator';
 import { View, ScrollView, TouchableOpacity, Text, TextInput } from 'react-native';
+import { SECRET_CODE } from 'react-native-dotenv';
 
 export default class PowerTranslatorDemo extends Component {
 
     constructor() {
         super();
-        this.state = { languageCode: 'fr',text: '' };
+        this.state = { languageCode: 'fr', text: ''};
     }
 
     render() {
         const styles = this.getStyles();
-        TranslatorConfiguration.setConfig(ProviderTypes.Google, 'AIzaSyDUCfhs69ITDtU3XOT4KFyFeIBHRA44kkg', this.state.languageCode);
+        TranslatorConfiguration.setConfig(ProviderTypes.Google, SECRET_CODE, this.state.languageCode);
 
         return (
             <ScrollView style={styles.container}>
