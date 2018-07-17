@@ -1,35 +1,44 @@
 import React, { Component } from 'react';
 import { PowerTranslator, ProviderTypes, TranslatorConfiguration } from 'react-native-power-translator';
-import { View, ScrollView, TouchableOpacity, Text, TextInput } from 'react-native';
+import { View, KeyboardAvoidingView, Text, TextInput, Picker } from 'react-native';
 import { SECRET_CODE } from 'react-native-dotenv';
-
+   
 export default class PowerTranslatorDemo extends Component {
 
     constructor() {
         super();
-        this.state = { languageCode: 'fr', text: ''};
+        this.state = { languageCode: 'zh-CN', text: ''};
     }
 
     render() {
         const styles = this.getStyles();
         TranslatorConfiguration.setConfig(ProviderTypes.Google, SECRET_CODE, this.state.languageCode);
-
         return (
-            <ScrollView style={styles.container}>
-                <View style={styles.languageBar}>
-                    <TouchableOpacity onPress={() => { this.changeLanguage('en') }}><Text style={styles.p}>English</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={() => { this.changeLanguage('fr') }}><Text style={styles.p}>French</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={() => { this.changeLanguage('ru') }}><Text style={styles.p}>Russian</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={() => { this.changeLanguage('de') }}><Text style={styles.p}>German</Text></TouchableOpacity>
-                </View>
+            <KeyboardAvoidingView style={styles.container}>
+
+                <Picker selectedValue={this.state.languageCode} onValueChange = {(itemValue, itemIndex) => this.setState({languageCode: itemValue})}>
+                    <Picker.Item label='English' value = 'en'/>
+                    <Picker.Item label='French' value = 'fr'/>
+                    <Picker.Item label='Russian' value = 'ru'/>
+                    <Picker.Item label='German' value = 'de'/>
+                    <Picker.Item label='Chinese (Simplified)' value = 'zh-CN'/>
+                    <Picker.Item label='Chinese (Traditional)' value = 'zh-TW'/>
+                    <Picker.Item label='Spanish' value = 'es'/>
+                    <Picker.Item label='Arabic' value = 'ar'/>
+                </Picker>
+                
                 <View style={{padding: 50}}>
-                  <TextInput style={{height: 40}}placeholder="Type here to translate!"onChangeText={(text) => this.setState({text})}/>
-                  <PowerTranslator style ={styles.title} text={this.state.text} />
+                    <TextInput style={{height: 40}} placeholder="Type here to translate!" onChangeText={(text) => this.setState({text: text})} enablesReturnKeyAutomatically={true} autoFocus={true} />
+                    <PowerTranslator style = {styles.title} text={this.state.text} />
+                    <Text>
+                        {this.state.text}
+                    </Text>
                 </View>
-            </ScrollView>
+            
+            </KeyboardAvoidingView>
         );
     }
-
+    
     getStyles() {
         return {
             container: {
@@ -62,9 +71,5 @@ export default class PowerTranslatorDemo extends Component {
                 color: '#828280',
             }
         }
-    }
-
-    changeLanguage(languageCode) {
-        this.setState({ languageCode: languageCode });
     }
 }
