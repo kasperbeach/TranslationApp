@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
+    "chalk": "^2.4.1",
     "jest": "^23.4.0",
     "jest-react-native": "^18.0.0",
     "react-native-dotenv": "^0.1.1",
@@ -19,6 +20,9 @@
     "preset": "react-native"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "google-translate-api": "^2.3.0",
     "react": "16.3.1",
     "react-native": "~0.55.2",
     "react-native-power-translator": "^1.1.1"

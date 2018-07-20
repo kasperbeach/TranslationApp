@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { PowerTranslator, ProviderTypes, TranslatorConfiguration } from 'react-native-power-translator';
 import { View, KeyboardAvoidingView, Text, TextInput, Picker } from 'react-native';
 import { SECRET_CODE } from 'react-native-dotenv';
-   
-export default class PowerTranslatorDemo extends Component {
+
+export default class TranslatorApp extends Component {
 
     constructor() {
         super();
         this.state = { languageCode: 'zh-CN', text: ''};
     }
-
+    
     render() {
+        
         const styles = this.getStyles();
         TranslatorConfiguration.setConfig(ProviderTypes.Google, SECRET_CODE, this.state.languageCode);
         return (
@@ -28,10 +29,10 @@ export default class PowerTranslatorDemo extends Component {
                 </Picker>
                 
                 <View style={{padding: 50}}>
-                    <TextInput style={{height: 40}} placeholder="Type here to translate!" onChangeText={(text) => this.setState({text: text})} enablesReturnKeyAutomatically={true} autoFocus={true} />
+                    <TextInput style={{height: 40}} placeholder="Type here to translate!" onChangeText={(text) => this.setState({text: text/* translateText(text,this.state.languageCode)*/}) } enablesReturnKeyAutomatically={true} autoFocus={true} />
                     <PowerTranslator style = {styles.title} text={this.state.text} />
                     <Text>
-                        {this.state.text}
+                        {this.state.text} 
                     </Text>
                 </View>
             
@@ -39,6 +40,7 @@ export default class PowerTranslatorDemo extends Component {
         );
     }
     
+
     getStyles() {
         return {
             container: {
@@ -72,4 +74,21 @@ export default class PowerTranslatorDemo extends Component {
             }
         }
     }
+}
+function translateText(translateMe, lang) {
+    return fetch('http://192.168.1.12:1000/translate-text', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            text: translateMe,
+            languageCode: lang,
+        })
+    })
+    .then(response => response.json())
+    .catch((error) => {
+        console.error(error)
+    })
 }
