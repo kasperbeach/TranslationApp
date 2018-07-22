@@ -3,19 +3,19 @@
 
 ## Getting Started
 
-*After cloning the repo please download the api.env from discord
-*Place it in the Application folder
-*You need to open the Application folder in VS Code (or something similar) and rename api.env to just *.env*
-*Open app.js and add a space or new line or something and save the file
+* After cloning the repo please download the api.env from discord
+* Place it in the Application folder
+* You need to open the Application folder in VS Code (or something similar) and rename api.env to just *.env*
+* Open app.js and add a space or new line or something and save the file
 
 ### Prerequisites
 
 In order for everything to run properly you need
 
-*Node.js
-*Python2
-*Java SE (8+)
-*Android SDK
+* Node.js
+* Python2
+* Java SE (8+)
+* Android SDK
 
 If you dont have any of these or you arent sure if you do then please visit the [React Native getting started](https://facebook.github.io/react-native/docs/getting-started.html) guide. Be sure to click the "Building Projects with Native Code" tab and select Windows and Android underneath.
 
